@@ -27,7 +27,7 @@
     };
   in {
     devShell.x86_64-linux = pkgs.mkShell {
-      buildInputs = [neovim-with-config pkgs.act pkgs.alejandra pkgs.bat pkgs.jq pkgs.nix-eval-jobs];
+      buildInputs = [neovim-with-config pkgs.act pkgs.alejandra pkgs.bat pkgs.jq pkgs.nix-eval-jobs pkgs.parallel];
       shellHook = ''
         export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
         export BAT_THEME="Solarized (light)"
