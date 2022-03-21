@@ -13,6 +13,10 @@
           set title
           set nu
           autocmd BufWritePre * :%s/\s\+$//e
+          set expandtab
+          set tabstop=2
+          set softtabstop=2
+          set shiftwidth=2
         '';
         packages.package.start = with pkgs.vimPlugins; [
           vim-nix
