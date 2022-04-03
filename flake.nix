@@ -19,6 +19,7 @@
           set shiftwidth=2
         '';
         packages.package.start = with pkgs.vimPlugins; [
+          vim-go
           vim-nix
           vim-parinfer
           YouCompleteMe
