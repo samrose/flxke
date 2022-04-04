@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   };
   outputs = {
     self,
@@ -30,12 +30,23 @@
       withRuby = false;
     };
   in {
-    defaultPackage.x86_64-linux = "flxke";
-    devShell.x86_64-linux = pkgs.mkShell {
-      buildInputs = [neovim-with-config pkgs.alejandra pkgs.bat pkgs.jq];
-      shellHook = ''
-        export BAT_THEME="Solarized (light)"
-      '';
+    packages.x86_64-linux.default = pkgs.buildEnv {
+      name = "flxke";
+      paths = [neovim-with-config pkgs.alejandra pkgs.bat pkgs.jq];
+    };
+    apps.x86_64-linux.default = {
+      type = "app";
+      program =
+        (pkgs.writeShellApplication {
+          name = "activate";
+          text = ''
+            echo "hello"
+            export BAT_THEME="Solarized (light)"
+            nix shell
+          '';
+        })
+        .outPath
+        + "/bin/activate";
     };
   };
 }
