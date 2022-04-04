@@ -31,6 +31,7 @@
       withRuby = false;
     };
   in {
+    defaultPackage.x86_64-linux = "flxke";
     devShell.x86_64-linux = pkgs.mkShell {
       buildInputs = [neovim-with-config pkgs.alejandra pkgs.bat pkgs.jq];
       shellHook = ''
