@@ -40,9 +40,8 @@
         (pkgs.writeShellApplication {
           name = "activate";
           text = ''
-            echo "hello"
             export BAT_THEME="Solarized (light)"
-            nix shell
+ 	    ehco "hello"
           '';
         })
         .outPath
