@@ -14,6 +14,7 @@
           set nu
           autocmd BufWritePre * :%s/\s\+$//e
           set ts=4
+	  set noet
         '';
         packages.package.start = with pkgs.vimPlugins; [
           vim-nix
