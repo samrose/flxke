@@ -41,7 +41,6 @@
           name = "activate";
           text = ''
             export BAT_THEME="Solarized (light)"
- 	    ehco "hello"
           '';
         })
         .outPath
