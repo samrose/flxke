@@ -13,13 +13,11 @@
           set title
           set nu
           autocmd BufWritePre * :%s/\s\+$//e
-          set expandtab
-          set tabstop=2
-          set softtabstop=2
-          set shiftwidth=2
+          unset expandtab
+          set ts=4
         '';
         packages.package.start = with pkgs.vimPlugins; [
-          vim-go
+          bash-support
           vim-nix
           vim-parinfer
           YouCompleteMe
