@@ -31,12 +31,21 @@
       withRuby = false;
     };
   in {
-    defaultPackage.x86_64-linux = "flxke-go-dev";
-    devShell.x86_64-linux = pkgs.mkShell {
-      buildInputs = [neovim-with-config pkgs.alejandra pkgs.bat pkgs.jq];
-      shellHook = ''
-        export BAT_THEME="Solarized (light)"
-      '';
+    packages.x86_64-linux.default = pkgs.buildEnv {
+      name = "flxke";
+      paths = [neovim-with-config pkgs.alejandra pkgs.bat pkgs.jq];
+    };
+    apps.x86_64-linux.default = {
+      type = "app";
+      program =
+        (pkgs.writeShellApplication {
+          name = "activate";
+          text = ''
+            export BAT_THEME="Solarized (light)"
+          '';
+        })
+        .outPath
+        + "/bin/activate";
     };
   };
 }
