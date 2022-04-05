@@ -13,7 +13,6 @@
           set title
           set nu
           autocmd BufWritePre * :%s/\s\+$//e
-          unset expandtab
           set ts=4
         '';
         packages.package.start = with pkgs.vimPlugins; [
