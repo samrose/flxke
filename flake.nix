@@ -17,7 +17,6 @@
           set ts=4
         '';
         packages.package.start = with pkgs.vimPlugins; [
-          bashsupport
           vim-nix
           vim-parinfer
           YouCompleteMe
