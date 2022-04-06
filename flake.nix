@@ -17,7 +17,6 @@
 	  set noet
         '';
         packages.package.start = with pkgs.vimPlugins; [
-          vim-codefmt
           vim-nix
           vim-parinfer
           YouCompleteMe
