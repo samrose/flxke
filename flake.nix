@@ -10,11 +10,11 @@
     neovim-with-config = pkgs.neovim.override {
       configure = {
         customRC = ''
-          set title
-          set nu
-          autocmd BufWritePre * :%s/\s\+$//e
-          set ts=4
-	  set noet
+                 set title
+                 set nu
+                 autocmd BufWritePre * :%s/\s\+$//e
+                 set ts=4
+          set noet
         '';
         packages.package.start = with pkgs.vimPlugins; [
           vim-nix
@@ -30,7 +30,7 @@
   in {
     packages.x86_64-linux.default = pkgs.buildEnv {
       name = "flxke";
-      paths = [neovim-with-config pkgs.alejandra pkgs.bat pkgs.jq];
+      paths = [neovim-with-config pkgs.alejandra pkgs.bat pkgs.jq pkgs.shfmt];
     };
     apps.x86_64-linux.default = {
       type = "app";
