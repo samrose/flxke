@@ -41,6 +41,7 @@
           name = "activate";
           text = ''
             export BAT_THEME="Solarized (light)"
+	    export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
           '';
         })
         .outPath
