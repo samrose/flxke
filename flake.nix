@@ -32,7 +32,7 @@
   in {
     packages.x86_64-linux.default = pkgs.buildEnv {
       name = "flxke";
-      paths = [neovim-with-config pkgs.alejandra pkgs.asciinema pkgs.bat pkgs.fzf pkgs.jq];
+      paths = [neovim-with-config pkgs.alejandra pkgs.asciinema pkgs.bat pkgs.bats pkgs.fzf pkgs.jq];
     };
     apps.x86_64-linux.default = {
       type = "app";
