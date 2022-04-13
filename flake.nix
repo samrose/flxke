@@ -30,7 +30,7 @@
   in {
     packages.x86_64-linux.default = pkgs.buildEnv {
       name = "flxke";
-      paths = [neovim-with-config pkgs.alejandra pkgs.asciinema pkgs.bat pkgs.bats pkgs.fswatch pkgs.fzf pkgs.jq pkgs.shfmt ];
+      paths = [neovim-with-config pkgs.alejandra pkgs.asciinema pkgs.bat pkgs.bats pkgs.entr pkgs.fswatch pkgs.fzf pkgs.jq pkgs.shfmt];
     };
     apps.x86_64-linux.default = {
       type = "app";
@@ -38,8 +38,8 @@
         (pkgs.writeShellApplication {
           name = "activate";
           text = ''
-            export BAT_THEME="Solarized (light)"
-	    export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
+                   export BAT_THEME="Solarized (light)"
+            export LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
           '';
         })
         .outPath
