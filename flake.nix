@@ -51,7 +51,7 @@
         withRuby = false;
       };
       in pkgs.mkShell {
-        buildInputs = with pkgs; [ alejandra bat bats  jq  go_1_18 gopls  gofumpt neovim-with-config python3 tmux ];
+        buildInputs = with pkgs; [ alejandra bat bats entr jq  go_1_18  gofumpt neovim-with-config python3 tmux ];
       });
     };
 }
