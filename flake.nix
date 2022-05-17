@@ -2,7 +2,7 @@
   description = "flxke go lang";
 
   # Nixpkgs / NixOS version to use.
-  inputs.nixpkgs.url = "github:flox/nixpkgs/unstable";
+  inputs.nixpkgs.url = "github:flox/nixpkgs/stable";
 
   outputs = { self, nixpkgs }:
     let
