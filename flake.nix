@@ -40,7 +40,6 @@
           '';
           packages.package.start = with pkgs.vimPlugins; [
             pkgs.fzf
-            vim-go
             vim-nix
             vim-parinfer
             YouCompleteMe
@@ -51,7 +50,7 @@
         withRuby = false;
       };
       in pkgs.mkShell {
-        buildInputs = with pkgs; [ alejandra bat bats entr jq  go_1_18 gopls gofumpt neovim-with-config python3 sqlite tmux ];
+        buildInputs = with pkgs; [ alejandra bat bats entr jq neovim-with-config python3 sqlite tmux ];
       });
     };
 }
