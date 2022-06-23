@@ -52,7 +52,7 @@
       };
     in
       pkgs.mkShell {
-        buildInputs = with pkgs; [alejandra bat bats entr jq go_1_18 gopls gofumpt neovim-with-config python3 sqlite tmux];
+        buildInputs = with pkgs; [alejandra bat bats entr jq go_1_18 gopls gofumpt graphviz neovim-with-config python3 sqlite tmux];
       });
   };
 }
