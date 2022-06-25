@@ -38,7 +38,8 @@
           '';
           packages.package.start = with pkgs.vimPlugins; [
             pkgs.fzf
-            vim-go
+        alchemist-vim
+        vim-elixir
             vim-markdown
             vim-nix
             vim-parinfer
