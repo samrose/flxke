@@ -37,6 +37,8 @@
             set tabstop=2
             set softtabstop=2
             set shiftwidth=2
+            set modeline
+            set modelines=5
           '';
           packages.package.start = with pkgs.vimPlugins; [
             pkgs.fzf
