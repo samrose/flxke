@@ -43,6 +43,7 @@
             vim-nix
             vim-parinfer
             YouCompleteMe
+            vim-markdown
           ];
         };
         viAlias = true;
