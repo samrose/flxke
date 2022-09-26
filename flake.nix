@@ -39,7 +39,10 @@
             set shiftwidth=2
           '';
           packages.package.start = with pkgs.vimPlugins; [
-            pkgs.fzf
+            coc-nvim
+            ale
+	    pkgs.fzf
+	    rust-vim
             vim-nix
             vim-parinfer
             YouCompleteMe
@@ -51,7 +54,7 @@
         withRuby = false;
       };
       in pkgs.mkShell {
-        buildInputs = with pkgs; [ alejandra bat bats entr expect jq neovim-with-config python3 shellcheck shfmt sqlite tmux vale ];
+        buildInputs = with pkgs; [ alejandra bat bats cargo entr expect jq neovim-with-config python3 rustc shellcheck shfmt sqlite tmux vale ];
       });
     };
 }
