@@ -4,29 +4,27 @@
   # Nixpkgs / NixOS version to use.
   inputs.nixpkgs.url = "github:flox/nixpkgs/stable";
 
-  outputs = { self, nixpkgs }:
-    let
+  outputs = {
+    self,
+    nixpkgs,
+  }: let
+    # to work with older version of flakes
+    lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
 
-      # to work with older version of flakes
-      lastModifiedDate = self.lastModifiedDate or self.lastModified or "19700101";
+    # Generate a user-friendly version number.
+    version = builtins.substring 0 8 lastModifiedDate;
 
-      # Generate a user-friendly version number.
-      version = builtins.substring 0 8 lastModifiedDate;
+    # System types to support.
+    supportedSystems = ["x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin"];
 
-      # System types to support.
-      supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
+    # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
+    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
 
-      # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-
-      # Nixpkgs instantiated for supported system types.
-      nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
-
-    in
-    {
-
-      devShell = forAllSystems (system:
-       let pkgs = nixpkgsFor.${system};
+    # Nixpkgs instantiated for supported system types.
+    nixpkgsFor = forAllSystems (system: import nixpkgs {inherit system;});
+  in {
+    devShell = forAllSystems (system: let
+      pkgs = nixpkgsFor.${system};
       neovim-with-config = pkgs.neovim.override {
         configure = {
           customRC = ''
@@ -50,8 +48,9 @@
         withPython3 = true;
         withRuby = false;
       };
-      in pkgs.mkShell {
-        buildInputs = with pkgs; [ alejandra bat bats entr expect jq neovim-with-config python3 shellcheck shfmt sqlite tmux vale ];
+    in
+      pkgs.mkShell {
+        buildInputs = with pkgs; [alejandra bat bats entr expect jq neovim-with-config python3 shellcheck shfmt sqlite tmux vale];
       });
-    };
+  };
 }
