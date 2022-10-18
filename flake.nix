@@ -50,7 +50,7 @@
       };
     in
       pkgs.mkShell {
-        buildInputs = with pkgs; [alejandra bat bats entr expect jq neovim-with-config python3 shellcheck shfmt sqlite tmux vale];
+        buildInputs = with pkgs; [alejandra bat bats entr expect jq neovim-with-config podman python3 shellcheck shfmt shadow sqlite tmux vale];
       });
   };
 }
