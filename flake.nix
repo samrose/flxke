@@ -42,6 +42,8 @@
             vim-parinfer
             YouCompleteMe
             vim-markdown
+            conjure
+            vim-surround
           ];
         };
         viAlias = true;
@@ -50,7 +52,7 @@
       };
     in
       pkgs.mkShell {
-        buildInputs = with pkgs; [alejandra bat bats entr expect jq neovim-with-config podman python3 nettools shellcheck shfmt shadow sqlite tmux vale];
+        buildInputs = with pkgs; [alejandra bat bats babashka clojure entr jq neovim-with-config nodejs nettools podman python3 shellcheck shfmt shadow sqlite tmux vale];
       });
   };
 }
