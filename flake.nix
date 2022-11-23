@@ -39,11 +39,12 @@
           packages.package.start = with pkgs.vimPlugins; [
             pkgs.fzf
             vim-nix
-            vim-parinfer
-            YouCompleteMe
             vim-markdown
-            conjure
+            vim-parinfer
             vim-surround
+            vim-fireplace
+            vim-clojure-static
+            rainbow_parentheses
           ];
         };
         viAlias = true;
@@ -52,7 +53,7 @@
       };
     in
       pkgs.mkShell {
-        buildInputs = with pkgs; [alejandra bat bats babashka clojure entr jq neovim-with-config nodejs nettools podman python3 shellcheck shfmt shadow sqlite tmux vale];
+        buildInputs = with pkgs; [alejandra bat bats babashka clojure entr jq leiningen neovim-with-config nodejs nettools podman python3 shellcheck shfmt shadow sqlite tmux vale vscode];
       });
   };
 }
